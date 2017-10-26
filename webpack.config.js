@@ -1,27 +1,33 @@
-const path = require('path');
+var path = require("path");
 var webpack = require("webpack");
 
 module.exports = {
   context: __dirname,
-  entry: './main.jsx',
+  entry: "./src/index.jsx",
   output: {
-    path: path.join(__dirname, 'app', 'assets', 'javascripts'),
-    filename: 'bundle.js'
-  },
-  resolve: {
-    extensions: ['.js', '.jsx', '.scss']
+    path: path.join(__dirname, 'assets', 'dist'),
+    filename: "bundle.js"
   },
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
+        test: [/\.jsx?$/, /\.js?$/],
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
         query: {
-          presets: ['react', 'es2015']
+          presets: ['es2015', 'react']
         }
       }
     ]
   },
-  devtool: 'source-maps'
+  devtool: 'source-maps',
+  resolve: {
+    extensions: [".js", ".jsx" ]
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery"
+    })
+  ]
 };

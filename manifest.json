@@ -3,7 +3,6 @@
 
   "name": "Hover Streams",
   "version": "1.0",
-  "default_locale": "en",
   "description": "This extension allows the user to hover streaming videos on the tab",
 
   "browser_action": {

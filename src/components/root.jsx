@@ -1,20 +1,19 @@
 import React from 'react';
-import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { createBrowserHistory } from 'history';
 
+import App from './app';
+
 const Root = (props) => {
-  const history = syncHistoryWithStore(createBrowserHistory(), store);
+  const history = createBrowserHistory();
 
   return (
-    <Provider>
-      <Router history={history}>
-        <Switch>
-          <App></App>
-        </Switch>
-      </Router>
-    </Provider>
+    <Router history={history}>
+      <Switch>
+        <App/>
+      </Switch>
+    </Router>
   )
 }
 
